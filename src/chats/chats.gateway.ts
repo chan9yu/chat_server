@@ -37,7 +37,14 @@ export class ChatsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
 	}
 
 	@SubscribeMessage('offer')
-	offer(@MessageBody() offer: string, @MessageBody() roomName: string, @ConnectedSocket() socket: Socket) {
+	offer(@MessageBody() message: string[], @ConnectedSocket() socket: Socket) {
+		const [offer, roomName] = message;
 		socket.to(roomName).emit('offer', offer);
+	}
+
+	@SubscribeMessage('answer')
+	answer(@MessageBody() message: string[], @ConnectedSocket() socket: Socket) {
+		const [answer, roomName] = message;
+		socket.to(roomName).emit('answer', answer);
 	}
 }
