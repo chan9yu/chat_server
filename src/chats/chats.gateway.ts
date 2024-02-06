@@ -10,9 +10,9 @@ import {
 } from '@nestjs/websockets';
 import { Socket } from 'socket.io';
 
-@WebSocketGateway({ namespace: 'chattings' })
+@WebSocketGateway()
 export class ChatsGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
-	private logger = new Logger('chat');
+	private logger = new Logger('Rooms');
 
 	constructor() {
 		this.logger.log('constructor');
@@ -30,9 +30,9 @@ export class ChatsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
 		this.logger.log(`connected : ${socket.id} ${socket.nsp.name}`);
 	}
 
-	@SubscribeMessage('new_user')
-	handleNewUser(@MessageBody() username: string, @ConnectedSocket() socket: Socket) {
-		socket.broadcast.emit('user_connected', username);
-		return username;
+	@SubscribeMessage('join_room')
+	joinRoom(@MessageBody() roomName: string, @ConnectedSocket() socket: Socket) {
+		socket.join(roomName);
+		socket.to(roomName).emit('welcome');
 	}
 }
