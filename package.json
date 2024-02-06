@@ -1,13 +1,13 @@
 {
-	"name": "chat_server",
+	"name": "simple-meeting",
 	"private": true,
 	"version": "0.0.1",
-	"description": "chat server repository",
+	"description": "simple meeting repository",
 	"author": "chan9yu <wry5533@gmail.com>",
-	"packageManager": "pnpm@8.14.0",
+	"packageManager": "pnpm@8.15.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/chan9yu/chat_server"
+		"url": "https://github.com/chan9yu/simple-meeting"
 	},
 	"jest": {
 		"moduleFileExtensions": [
@@ -58,12 +58,10 @@
 		"@nestjs/common": "^10.0.0",
 		"@nestjs/config": "^3.1.1",
 		"@nestjs/core": "^10.0.0",
-		"@nestjs/mongoose": "^10.0.2",
 		"@nestjs/platform-express": "^10.0.0",
 		"@nestjs/platform-socket.io": "^10.3.0",
 		"@nestjs/websockets": "^10.3.0",
 		"class-validator": "^0.14.1",
-		"mongoose": "^8.1.0",
 		"reflect-metadata": "^0.1.13",
 		"rxjs": "^7.8.1",
 		"socket.io": "^4.7.4"
