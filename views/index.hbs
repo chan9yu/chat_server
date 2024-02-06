@@ -26,12 +26,15 @@
 				<button type="submit">Enter room</button>
 			</form>
 		</div>
-		<div id="call">
-			<div id="myStream">
-				<video id="myFace" autoplay playsinline width="400" height="400"></video>
+		<div id="call" style="display: flex;">
+			<div id="localStream">
+				<video id="localFace" autoplay playsinline width="400" height="400"></video>
 				<button id="mute">Mute</button>
 				<button id="camera">Turn Camera Off</button>
 				<select id="cameras"></select>
+			</div>
+			<div id="remoteStream">
+				<video id="remoteFace" autoplay playsinline width="400" height="400"></video>
 			</div>
 		</div>
 	</main>

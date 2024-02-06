@@ -1,6 +1,7 @@
 const socket = io();
 
-const myFace = document.getElementById('myFace');
+const localFace = document.getElementById('localFace');
+const remoteFace = document.getElementById('remoteFace');
 const muteBtn = document.getElementById('mute');
 const cameraBtn = document.getElementById('camera');
 const camerasSelect = document.getElementById('cameras');
@@ -45,7 +46,7 @@ async function getMedia(deviceId) {
 
 	try {
 		myStream = await navigator.mediaDevices.getUserMedia(deviceId ? cameraConstraints : initialConstrains);
-		myFace.srcObject = myStream;
+		localFace.srcObject = myStream;
 		!deviceId && (await getCameras());
 	} catch (e) {
 		console.log(e);
@@ -135,9 +136,25 @@ socket.on('answer', async answer => {
 	await myPeerConnection.setRemoteDescription(answer);
 });
 
+socket.on('ice', ice => {
+	console.log('<<< recv candidate');
+	myPeerConnection.addIceCandidate(ice);
+});
+
 // RTC Code
 
 function makeConnection() {
 	myPeerConnection = new RTCPeerConnection();
+	myPeerConnection.addEventListener('icecandidate', handleIce);
+	myPeerConnection.addEventListener('addstream', handleAddStream);
 	myStream.getTracks().forEach(track => myPeerConnection.addTrack(track, myStream));
+}
+
+function handleIce(data) {
+	console.log('sent candidate');
+	socket.emit('ice', data.candidate, roomName);
+}
+
+function handleAddStream(data) {
+	remoteFace.srcObject = data.stream;
 }
