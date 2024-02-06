@@ -1,23 +1,13 @@
-import { Module, NestModule } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
-import * as mongoose from 'mongoose';
 
 import { AppController } from './app.controller';
 import { ChatsModule } from './chats/chats.module';
+import { AppService } from './app.service';
 
 @Module({
-	imports: [
-		ConfigModule.forRoot({ isGlobal: true }), //
-		MongooseModule.forRoot(process.env.MONGO_URL || ''),
-		ChatsModule
-	],
+	imports: [ConfigModule.forRoot({ isGlobal: true }), ChatsModule],
 	controllers: [AppController],
-	providers: []
+	providers: [AppService]
 })
-export class AppModule implements NestModule {
-	configure() {
-		const DEBUG = process.env.MODE === 'dev' ? true : false;
-		mongoose.set('debug', DEBUG);
-	}
-}
+export class AppModule {}
