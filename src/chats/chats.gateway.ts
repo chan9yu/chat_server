@@ -35,4 +35,9 @@ export class ChatsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
 		socket.join(roomName);
 		socket.to(roomName).emit('welcome');
 	}
+
+	@SubscribeMessage('offer')
+	offer(@MessageBody() offer: string, @MessageBody() roomName: string, @ConnectedSocket() socket: Socket) {
+		socket.to(roomName).emit('offer', offer);
+	}
 }
