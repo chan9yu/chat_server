@@ -11,7 +11,7 @@ import {
 import { Socket } from 'socket.io';
 
 @WebSocketGateway()
-export class ChatsGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+export class RoomsGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
 	private logger = new Logger('Rooms');
 
 	constructor() {
