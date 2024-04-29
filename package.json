@@ -1,8 +1,8 @@
 {
 	"name": "simple-meet_server",
 	"private": true,
-	"version": "0.0.1",
-	"description": "simple meet server repository",
+	"version": "1.0.0",
+	"description": "🖥️ simple meet server with nestjs",
 	"author": "chan9yu <wry5533@gmail.com>",
 	"packageManager": "pnpm@8.15.0",
 	"repository": {
