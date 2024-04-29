@@ -12,6 +12,7 @@
 *.min.css
 /build
 /dist
+.vercel
 
 # misc
 .DS_Store
