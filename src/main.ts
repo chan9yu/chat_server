@@ -22,7 +22,7 @@ async function bootstrap() {
 	app.setGlobalPrefix(API_PREFIX);
 
 	await app.listen(PORT);
-	Logger.log(`🚀 어플리케이션을 시작합니다 http://localhost:${PORT}/${API_PREFIX}`);
+	Logger.log(`🚀 에플리케이션을 시작합니다 http://localhost:${PORT}/${API_PREFIX}`);
 }
 
 bootstrap();
