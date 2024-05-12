@@ -40,7 +40,5 @@ npm-debug.log*
 .eslintrc.cjs
 .eslintrc.js
 *config.js
+*config.cjs
 *.config.js
-
-# temp
-public

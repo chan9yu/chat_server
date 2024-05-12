@@ -10,9 +10,17 @@ module.exports = {
 		ecmaVersion: 2022,
 		sourceType: 'module'
 	},
+	settings: {
+		'import/resolver': {
+			node: {
+				extensions: ['.js', '.ts']
+			}
+		}
+	},
 	extends: [
-		'prettier', //
+		'prettier',
 		'eslint:recommended',
+		'plugin:import/recommended',
 		'plugin:prettier/recommended',
 		'plugin:@typescript-eslint/recommended'
 	],
