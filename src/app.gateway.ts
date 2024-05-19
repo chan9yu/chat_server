@@ -41,9 +41,12 @@ export class AppGateway implements OnGatewayInit, OnGatewayConnection, OnGateway
 
 	handleDisconnect(@ConnectedSocket() socket: Socket) {
 		this.logger.log(`disconnected: ${socket.id}`);
+
+		// connectedUsers에서 socket 연결된 유저 있는지 확인
 		const user = globalData.connectedUsers.find(user => user.socketId === socket.id);
 
 		if (user) {
+			// 해당 room에서 사용자 제거 및 socket leave 처리
 			const room = globalData.rooms.find(room => room.id === user.roomId) as Room;
 			room.connectedUsers = room.connectedUsers.filter(user => user.socketId !== socket.id);
 			socket.leave(user.roomId);
@@ -52,6 +55,7 @@ export class AppGateway implements OnGatewayInit, OnGatewayConnection, OnGateway
 				socket.to(room.id).emit('user_disconnected', { socketId: socket.id });
 				socket.to(room.id).emit('room_update', { connectedUsers: room.connectedUsers });
 			} else {
+				// 해당 room의 인원 수가 0인 경우 해당 room 삭제
 				globalData.rooms = globalData.rooms.filter(r => r.id !== room.id);
 			}
 		}
@@ -97,11 +101,14 @@ export class AppGateway implements OnGatewayInit, OnGatewayConnection, OnGateway
 			socketId: socket.id
 		};
 
+		// roomId에 해당하는 room에 새로운 user 추가
 		const room = globalData.rooms.find(room => room.id === roomId) as Room;
 		room.connectedUsers = [...room.connectedUsers, newUser];
 
+		// connectedUsers에 새로운 user 추가
 		globalData.connectedUsers = [...globalData.connectedUsers, newUser];
 
+		// peer 연결을 준비하기 위해 이 room에 이미 있는 모든 user에게 emit
 		room.connectedUsers.forEach(user => {
 			if (user.socketId !== socket.id) {
 				this.server.to(user.socketId).emit('conn_prepare', { connUserSocketId: socket.id });
