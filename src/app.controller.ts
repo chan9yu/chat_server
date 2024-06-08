@@ -6,12 +6,12 @@ export class AppController {
 	constructor(private readonly appService: AppService) {}
 
 	@Get()
-	getHeoll() {
+	public getHeoll() {
 		return this.appService.getHello();
 	}
 
 	@Get('/room-exists/:roomId')
-	getRoomInfo(@Param('roomId') roomId: string) {
+	public getRoomInfo(@Param('roomId') roomId: string) {
 		return this.appService.getRoomInfo(roomId);
 	}
 }

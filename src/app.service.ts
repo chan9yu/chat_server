@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { type Room, globalData } from './common/data';
+import { roomData, type Room } from './common/data/room.data';
 
 type RoomInfo = {
 	exists: boolean;
@@ -9,7 +9,7 @@ type RoomInfo = {
 @Injectable()
 export class AppService {
 	private findRoomById(roomId: string) {
-		return globalData.rooms.find(room => room.id === roomId);
+		return roomData.rooms.find(room => room.id === roomId);
 	}
 
 	private isRoomFull(room: Room) {
@@ -17,7 +17,7 @@ export class AppService {
 	}
 
 	public getHello(): string {
-		return `Hello, we're WebRTC Advanced server`;
+		return `Hello, we're simple meet server`;
 	}
 
 	public getRoomInfo(roomId: string) {
