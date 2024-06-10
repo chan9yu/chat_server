@@ -144,14 +144,14 @@ export class RoomsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
 	}
 
 	@SubscribeMessage(SocketEvents.CONNECTION_SIGNAL)
-	public connectionSignal(@MessageBody() data: ConnectionSignalMessage) {
+	public connectionSignal(@MessageBody() data: ConnectionSignalMessage, @ConnectedSocket() socket: Socket) {
 		const { signal, socketId } = data;
-		this.server.to(socketId).emit(SocketEvents.CONNECTION_SIGNAL, { signal, socketId });
+		this.server.to(socketId).emit(SocketEvents.CONNECTION_SIGNAL, { signal, socketId: socket.id });
 	}
 
 	@SubscribeMessage(SocketEvents.CONNECTION_INIT)
-	public connectionInit(@MessageBody() data: ConnectionInitMessage) {
+	public connectionInit(@MessageBody() data: ConnectionInitMessage, @ConnectedSocket() socket: Socket) {
 		const { socketId } = data;
-		this.server.to(socketId).emit(SocketEvents.CONNECTION_INIT, { socketId });
+		this.server.to(socketId).emit(SocketEvents.CONNECTION_INIT, { socketId: socket.id });
 	}
 }
