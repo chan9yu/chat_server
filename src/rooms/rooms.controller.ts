@@ -9,4 +9,9 @@ export class RoomsController {
 	public getRoomInfo(@Param('roomId') roomId: string) {
 		return this.roomsService.getRoomInfo(roomId);
 	}
+
+	@Get('/turn-info')
+	public getTurnInfo() {
+		return this.roomsService.getTurnInfo();
+	}
 }
