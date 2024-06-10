@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"description": "🖥️ simple meet server with nestjs",
 	"author": "chan9yu <wry5533@gmail.com>",
-	"packageManager": "pnpm@9.2.0",
+	"packageManager": "pnpm@9.3.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/chan9yu/simple-meet_server"
