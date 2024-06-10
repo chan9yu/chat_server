@@ -12,7 +12,7 @@ import {
 import { Server, Socket } from 'socket.io';
 import { v4 as uuidv4 } from 'uuid';
 
-import { roomData, type ConnectedUser, type Room } from '../common/data/room.data';
+import { roomData, type ConnectedUser, type Room } from './rooms.data';
 
 enum SocketEvents {
 	CONNECT = 'connect',

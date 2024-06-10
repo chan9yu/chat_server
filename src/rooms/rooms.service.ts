@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as twilio from 'twilio';
 
-import { roomData } from '../common/data/room.data';
+import { roomData } from './rooms.data';
 
 type TurnServer = {
 	credential?: string;
