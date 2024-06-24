@@ -4,7 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import configuration from './config/configuration';
-import { RoomsModule } from './rooms/rooms.module';
+import { MeetsModule } from './meets/meets.module';
 
 @Module({
 	imports: [
@@ -13,7 +13,7 @@ import { RoomsModule } from './rooms/rooms.module';
 			load: [configuration],
 			isGlobal: true
 		}),
-		RoomsModule
+		MeetsModule
 	],
 	controllers: [AppController],
 	providers: [AppService]
