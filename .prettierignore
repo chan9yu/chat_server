@@ -5,6 +5,11 @@ node_modules
 
 # testing
 coverage
+__tests__
+__snapshots__
+tests
+test-helpers
+cypress
 
 # build
 storybook-static
@@ -15,14 +20,36 @@ storybook-static
 build
 dist
 
+# editor
+*.idea
+.vscode
+
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+*.tmp
+*.log
+*.log.*
+*.lock
+*.gz
+npm-debug.log*
+.history
+
+# config
+.babelrc.json
+.stylelintrc.json
+.eslintrc.cjs
+.eslintrc.js
+*config.js
+*config.cjs
+*.config.js
 
 # log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
