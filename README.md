@@ -1,14 +1,16 @@
 <a name="readme-top"></a>
 
-# Simple Meet Server
+# Meet Link Server
 
-> 🖥️ simple meet server with nestjs
+> 🖥️ 실시간 채팅, 화면 공유, 및 미디어 통화를 제공하는 NestJS 기반의 MeetLink Server.
+> <br />
+> 원격 커뮤니케이션을 위한 앱 서비스입니다.
 
 <br />
 
 ## 🔗 Link
 
-- <a href="https://github.com/chan9yu/simple-meet_app" target="_blank" rel="noreferrer">APP 레포지토리</a>
+- <a href="https://github.com/chan9yu/meet-link" target="_blank" rel="noreferrer">App Repository</a>
 
 <p align="right">
   <a href="#readme-top">맨 위로</a>
@@ -45,6 +47,7 @@ npm -g install pnpm
 
 ```shell
 # .nvmrc 기준 node version 설치
+# nvm을 사용하지 않는다면 수동으로 노드버전을 맞춰주세요.
 nvm use
 ```
 
@@ -53,13 +56,13 @@ nvm use
 1. 프로젝트 클론
 
 ```shell
-git clone https://github.com/chan9yu/simple-meet_server
+git clone https://github.com/chan9yu/meet-link_server
 ```
 
 2. 프로젝트 디렉토리로 이동
 
 ```shell
-cd simple-meet_server
+cd meet-link_server
 ```
 
 3. 종속성 설치
@@ -72,6 +75,32 @@ pnpm install
 
 ```
 pnpm dev
+```
+
+<p align="right">
+  <a href="#readme-top">맨 위로</a>
+</p>
+
+## ✨ Features
+
+- 실시간 채팅
+- 화면 공유
+- 미디어 통화
+- 사용자 관리
+- 채팅 기록 저장
+
+<p align="right">
+  <a href="#readme-top">맨 위로</a>
+</p>
+
+## ⚙️ Environment Variables
+
+환경 변수를 설정하는 방법입니다.
+
+```shell
+# .env.example 기준으로 .env 파일 생성
+TWILIO_ACCOUNT_SID=YOUR_TWILIO_ACCOUNT_SID
+TWILIO_AUTH_TOKEN=YOUR_TWILIO_AUTH_TOKEN
 ```
 
 <p align="right">
