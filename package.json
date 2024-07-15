@@ -1,13 +1,13 @@
 {
-	"name": "simple-meet_server",
+	"name": "meet-link_server",
 	"private": true,
-	"version": "1.0.0",
-	"description": "🖥️ simple meet server with nestjs",
+	"version": "0.0.1",
+	"description": "🖥️ 실시간 채팅, 화면 공유, 및 미디어 통화를 제공하는 NestJS 기반의 MeetLink Server.",
 	"author": "chan9yu <wry5533@gmail.com>",
-	"packageManager": "pnpm@9.3.0",
+	"packageManager": "pnpm@9.5.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/chan9yu/simple-meet_server"
+		"url": "https://github.com/chan9yu/meet-link_server"
 	},
 	"jest": {
 		"moduleFileExtensions": [
@@ -51,7 +51,7 @@
 		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
 		"test:e2e": "jest --config ./test/jest-e2e.json",
 		"commit": "./node_modules/cz-customizable/standalone.js",
-		"prepare": "husky install",
+		"prepare": "husky",
 		"husky:permission": "chmod +x .husky/*"
 	},
 	"dependencies": {
